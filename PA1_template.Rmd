@@ -44,7 +44,7 @@ Show any code that is needed to:
 referenced in the Introduction above.
 
 ```{r, echo=FALSE, results="hide"}
-setwd("~/CourseraDataScienceSpecialty/4_Reproducible Research/repdata_data_activity")
+setwd("~/CourseraDataScienceSpecialty/4_Reproducible Research/RepData_PeerAssessment1")
 ```
 
 
@@ -85,7 +85,8 @@ steps
 ```
 
 ### Create a histogram of the total steps taken each day:
-```{r stephist}
+
+```{r stephist, fig.width=7, fig.height=6}
 ggplot(steps, aes(x = steps)) +
   geom_histogram(fill = "red", binwidth = 1000) +
   labs(title = "Histogram of Steps per day", x = "Steps per day", y = "Frequency")
@@ -124,7 +125,7 @@ interval <- data %>%
 ```
 
 ### Create a time series plot using ggplot2 package of the five-minute interval & average number of steps taken:
-```{r intPlot}
+```{r intPlot, fig.width=7, fig.height=6}
 ggplot(interval, aes(x=interval, y=steps)) + geom_line(color = "blue")
 ```
 
@@ -178,7 +179,7 @@ steps_full <- dataImputed %>%
 steps_full
 ```
 
-```{r histo}
+```{r histo, fig.width=7, fig.height=6}
 ggplot(steps_full, aes(x = steps)) +
   geom_histogram(fill = "red", binwidth = 1000) +
   labs(title = "Total Number of Steps per day, including imputed missing values", 
@@ -230,7 +231,7 @@ interval_full <- dataImputed %>%
 ```
 
 - Create the time series plot with the 5-minute interval for weekday and weekend:
-```{r}
+```{r compare, fig.width=7, fig.height=6}
 compare <- ggplot(interval_full, aes(x=interval, y=steps, color = weektype)) +
   geom_line() +
   facet_wrap(~weektype, ncol = 1, nrow=2)
